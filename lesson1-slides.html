@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>CSSS: A brief introduction</title>
+	
+	<link href="slideshow.css" rel="stylesheet" />
+	<link href="theme.css" rel="stylesheet" />
+	<link href="talk.css" rel="stylesheet" />
+	<script src="prefixfree.min.js"></script>
+</head>
+<body>
+
+<header id="intro" class="slide">
+	<h1>
+    CSS introduction - selectors and basic properties
+	</h1>
+	<p class="attribution">Grégoire Charvet</p>
+</header>
+<section>
+	<header class="slide">
+		<h1>CSS</h1>
+	</header>
+	
+	<section class="slide" title="CSSS: Introduction">
+		<h2>What is it?</h2>
+		<p>Cascading Style Sheet</p>
+		<ul>
+			<li>Another language</li>
+			<li>Makes the html looks good</li>
+		</ul>
+	</section>
+	
+	<section class="slide">
+		<h2>HTML for CSS</h2>
+		<ul>
+      <li>Include a doctype: <code>&lt;!DOCTYPE html&gt;</code> to make sure it renders consistently on all browsers.</li>
+      <li>Two very useful tags: <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code></li>
+      <li> <code>class</code> and <code>id</code> are super useful too.</li>
+		</ul>
+	</section>
+
+  <section class="slide">
+    <h2>Syntax</h2>
+    <ul>
+      <li> <img src="./img/selector.gif" alt="" /></li>
+      <li>Selector: The target for the style.</li>
+      <li>Declaration: a styling element.</li>
+      <li>Don't forget to end each declaration with <code>;</code></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Using css</h2>
+    <h3>Inline declaration</h3>
+    <pre><code lang="html">&lt;head&gt;
+  &lt;style&gt;
+    h1 {
+      color: blue;
+      font-size: 12px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code> </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Using css (2)</h2>
+    <h3>Include external file</h3>
+    <pre><code lang="html">&lt;link href="./css/my.css"
+  rel="stylesheet"
+  type="text/css" /&gt;</code></pre>
+  </section>
+
+  <header class="slide">
+    <h1>Some selectors</h1>
+  </header>
+
+  <section class="slide">
+    <h2>tag selector</h2>
+    <ul>
+      <li><code>h1 {...}</code> targets all the <code>h1</code> tags in the document</li>
+      <li><code>h1 ul li {...}</code> targets all the <code>li</code> tags which
+      have an <code>ul</code> tag as ancestor with a <code>h1</code> tag as ancestor.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+  <h2>h1 ul li</h2>
+      <pre><code>&lt;h1&gt;
+  &lt;p&gt; Very interesting text here
+    &lt;ul&gt;
+      &lt;li&gt;one&lt;/li&gt;
+      &lt;li&gt;two&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/p&gt;
+&lt;/h1&gt;</code></pre>
+  </section>
+
+  <section class="slide">
+    <h2>class and id</h2>
+    <ul>
+      <li><code>h1.title</code> for <code>&lt;h1 class="title"&gt;</code></li>
+      <li><code>h1#title</code> for <code>&lt;h1 id="title"&gt;</code></li>
+      <li>Remember: id should be unique.</li>
+      <li>Prefer use of <code>class</code></li>
+      <li>Multiple classes &amp; id are ok too <br />
+      <code>&lt;div class="button round shiny" id="purchaseButton"&gt;</code>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Universal selector</h2>
+    <ul>
+      <li><code>*</code> targets every tags.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Group selectors</h2>
+    <code>h1, h2, h3, h4, h5, h6 { color: red;}</code>
+    <p>All headers are red.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Pseudo class/element</h2>
+    <ul>
+      <li><code>a:visited { color: blue; }</code> linked clicked before are blue.</li>
+      <li><code>a:hover { font-weight: bold; }</code> big links when the mouse is over it.</li>
+      <li><code>input:focus { border-color: #ccc; }</code> Grey border on form when user is typing stuff.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Attribute selector</h2>
+    <ul>
+      <li><code>img[title]</code> targets all images elements with a title.</li>
+      <li><code>a[href^=http://]</code> targets all links which begins with 'http://'</li>
+    </ul>
+  </section>
+	
+  <section class="slide">
+    <h2>Which style ? Specificity</h2>
+    <ul>
+      <li>Tag selector: <em>1 points</em></li>
+      <li>Class selector: <em>10 points</em></li>
+      <li>ID selector: <em>100 points</em></li>
+      <li>Inline selector: <em>1000 points</em></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>examples</h2>
+    <ul>
+      <li><code>h1 p.catchphrase</code> <span class="delayed">12 points</span> </li>
+      <li><code>#title img.logo</code> <span class="delayed">111 points</span> </li>
+      <li>highest specificity wins</li>
+      <li>Tie ? Last style win.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>color</h2>
+    <p>Change the <span id="subject-color">text's color</span></p>
+    <textarea class="snippet" data-subject="#subject-color" spellcheck="false" rows="2" style="font-size: 90%;">color: blue;</textarea>
+  </section>
+
+  <section class="slide">
+    <h2>background-color</h2>
+    <textarea class="snippet" rows="2">background-color: #ccc;</textarea>
+    <p>Hex colors ? see <a href="http://www.colorhexa.com/">Color Hexa</a></p>
+  </section>
+
+  <section class="slide">
+    <h2>background-color (more)</h2>
+    <p>Can also specify the transparency</p>
+    <textarea class="snippet" rows="2">background-color: rgba(125, 0, 125, .6);</textarea>
+  </section>
+
+
+  <section class="slide">
+    <h2>Recap</h2>
+    <ul>
+      <li>A css rule has the following form <br />
+      <img src="./img/selector.gif" alt="" />
+      </li>
+      <li>A selector can be any combination of
+      <ul>
+        <li>an html tag</li>
+        <li>a class (starts with a <code>.</code>)</li>
+        <li>an id (starts with a <code>#</code>)</li>
+        <li>a pseudo class/element (starts with a <code>:</code>)</li>
+      </ul>
+        <li>A rule can apply to multiple selectors: use <code>,</code> between them.</li>
+      </li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Recap (2)</h2>
+    <ul>
+      <li>A css rule can have multiple declarations inside the <code>{}</code>.</li>
+      <li>A declaration always end with a <code>;</code></li>
+      <li>A declaration has the property on the left, a <code>:</code> and the value after.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Recap (3)</h2>
+    <p>Some basic css properties</p>
+    <ul>
+      <li>color: change the color of the text.</li>
+      <li>background-color: change the color of the background.</li>
+      <li>border: shorthand to define borders.</li>
+      <li>font-weight</li>
+      <li>border-radius: to have round corners.</li>
+      <li>and many more...</li>
+    </ul>
+  </section>
+
+  <footer class="slide">
+  <h2>that's all for the moment</h2>
+  </footer>
+
+<script src="slideshow.js"></script>
+<script src="plugins/css-edit.js"></script>
+<script src="plugins/css-snippets.js"></script>
+<script src="plugins/css-controls.js"></script>
+<script src="plugins/code-highlight.js"></script>
+<script>
+var slideshow = new SlideShow();
+
+var snippets = document.querySelectorAll('.snippet');
+for(var i=0; i<snippets.length; i++) {
+	new CSSSnippet(snippets[i]);
+}
+
+var cssControls = document.querySelectorAll('.css-control');
+for(var i=0; i<cssControls.length; i++) {
+	new CSSControl(cssControls[i]);
+}
+</script>
+	
+</body>
+</html>
