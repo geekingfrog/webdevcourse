@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>CSSS: A brief introduction</title>
+	
+	<link href="slideshow.css" rel="stylesheet" />
+	<link href="theme.css" rel="stylesheet" />
+	<link href="talk.css" rel="stylesheet" />
+
+  <style type="text/css" media="all">
+textarea {
+  resize: none;
+}
+
+* {
+  transition: width .5s, height .5s;
+}
+
+.col {
+  width: 50%;
+  float: left;
+}
+
+.border-container {
+  padding: 5px;
+  border: 3px solid red;
+  display: inline-block;
+}
+
+.box {
+  background-color: crimson;
+  height: 100px;
+  width: 100px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+  </style>
+
+	<script src="prefixfree.min.js"></script>
+</head>
+<body>
+
+<header id="intro" class="slide">
+	<h1>
+    CSS introduction - Box model and positioning
+	</h1>
+	<p class="attribution">Grégoire Charvet</p>
+</header>
+<section>
+	
+	<section class="slide" title="CSSS: Introduction">
+		<h2>Box model</h2>
+		<ul>
+			<li>An element has a width and an height</li>
+		</ul>
+    <textarea class="snippet" data-subject="#boxModel0" cols="2">
+width: 200px;
+height: 200px;</textarea>
+    <div id="boxModel0" style="background-color: rgba(200,10,10,.7); width: 200px; height: 200px;">
+    A simple box.
+    </div>
+	</section>
+	
+  <section class="slide">
+    <h2>Units</h2>
+    <ul>
+      <li>pixels: px</li>
+      <li>current font size: em</li>
+      <li>percentage of the parent: %</li>
+    </ul>
+    <textarea class="snippet" data-subject="#boxModel1" cols="2">
+width: 50%;
+height: 2em;</textarea>
+    <div id="boxModel1" style="background-color: rgba(200,10,10,.7); width: 200px; height: 200px;">
+    A simple box.
+    </div>
+  </section>
+
+  <section class="slide">
+    <p>Padding, border and margin</p>
+    <img src="./img/box_model.gif">
+  </section>
+
+  <section class="slide">
+    <h2>example</h2>
+    <textarea class="snippet" data-subject="#boxModel2">
+padding: 10px;
+border-width: .2em;
+margin: 15px; </textarea>
+<div id="boxModel2" style="width: 300px; height: 150px; background-color: rgba(30, 30, 30, .6);
+  border-color: black; border-style: solid;">
+Box here
+</div>
+  </section>
+
+  <section class="slide">
+    <h2>More control</h2>
+    <textarea class="snippet" data-subject="#boxModel3">
+padding-top: 10px;
+padding-right: 30px;
+padding-bottom: 1em;
+padding-left: 50%;</textarea>
+<div id="boxModel3" style="width: 50px; height: 50px; background-color: rgba(30, 30, 30, .6);
+  border: 1px solid black;">
+</div>
+  </section>
+
+  <section class="slide">
+    <h2>Shorthand</h2>
+    <p>dimensions clockwise, start from top (top, right, bottom, left)</p>
+    <textarea class="snippet" data-subject="#boxModel4">
+padding: 10px 20px 1em 50%;</textarea>
+    <div id="boxModel4" style="width: 50px; height: 50px; background-color: rgba(30, 30, 30, .6);
+      border: 1px solid black;">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Shorthand (2)</h2>
+    <p>If top==bottom and left==right, two properties are needed, one for top/bottom and the other for left/right</p>
+    <textarea class="snippet" data-subject="#boxModel5">
+padding: 10px 40px;</textarea>
+    <div id="boxModel5" style="width: 50px; height: 50px; background-color: rgba(30, 30, 30, .6);
+      border: 1px solid black;">
+    </div>
+  </section>
+
+  <section class="slide">
+  <p>Works the same for padding, margin and border</p>
+    <textarea class="snippet" data-subject="#boxModel6">
+padding: 10px 20px;
+border-width: .2em 1em;
+margin: 15px 10% 30px 20%; </textarea>
+<div id="boxModel6" style="width: 50px; height: 50px; background-color: rgba(30, 30, 30, .6);
+  border-color: black; border-style: solid;">
+</div>
+  </section>
+
+  <section class="slide">
+    <h2>more margins</h2>
+    <p>Margin can be negatives</p>
+    <textarea class="snippet" data-subject="#margin0">margin: 20px;
+margin-left: -20px;</textarea>
+    <div class="border-container">
+      <div id="margin0" style="background-color: crimson; width: 100px; height: 100px;">
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>margin: auto;</h2>
+    <p>Fix the width of the container and set margins left and right to auto.</p>
+
+    <div class="col">
+      container:
+      <textarea class="snippet" data-subject="#margin1">width: 400px;</textarea>
+    </div>
+
+    <div class="col">
+      element:
+      <textarea class="snippet" data-subject="#margin2">margin: 0 auto;</textarea>
+    </div>
+
+    <div class="border-container" id="margin1">
+      <div id="margin2" style="background-color: crimson; width: 100px; height: 100px;">
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>border</h2>
+    <ul>
+      <li> <code>border-width</code></li>
+      <li> <code>border-style</code> can be <code>solid, dotted, dashed...</code></li>
+      <li> <code>border-color</code></li>
+    </ul>
+    <textarea class="snippet" data-subject="#border0">border-width: 2px;
+border-style: dashed;
+border-color: lime;</textarea>
+  <div id="border0" style="background-color: red; width: 100px; height: 100px;">
+  </div>
+  </section>
+
+  <section class="slide">
+    <h2>border - more</h2>
+    <p> <code>border-top</code> <code>border-right</code> <code>border-bottom</code> <code>border-left</code></p>
+    <textarea class="snippet" data-subject="#border0">border-width: 5px;
+border-top-width: 2px;
+border-style: dashed;
+border-color: lime;
+border-bottom-color: cyan;</textarea>
+    <div id="border0" style="background-color: red; width: 100px; height: 100px;">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>round borders</h2>
+    <p>Just use <code>border-radius</code></p>
+    <textarea class="snippet" data-subject="#border-radius0">border-radius: 10px;</textarea>
+    <div id="border-radius0" style="background-color: crimson; width: 100px; height: 100px;">
+    </div>
+    <p class="delayed">use <code>50%</code> to create a circle.</p>
+  </section>
+
+  <section class="slide">
+    <h2>height</h2>
+    <p>Set the height of an element</p>
+    <textarea data-subject="#height0" class="snippet">height: 400px;</textarea>
+    <div id="height0" style="background-color: crimson;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus mi molestie, venenatis ligula et.  
+    </div>
+    <p>be careful to the content.</p>
+  </section>
+
+
+  <section class="slide">
+    <h2>overflow</h2>
+    <p> <code>overflow: hidden/auto/scroll/visible</code></p>
+    <textarea data-subject="#overflow0" class="snippet">height: 100px;
+overflow: hidden;</textarea>
+    <div id="overflow0" style="background-color: crimson;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus mi molestie, venenatis ligula et.  
+    </div>
+    <br />
+    <p>Also works with different axis: <code>overflow-x</code> and <code>overflow-y</code></p>
+  </section>
+
+  <section class="slide">
+    <h2>Display</h2>
+    <p>The <code>display</code> property control how an element should be displayed.</p>
+  </section>
+
+  <section class="slide">
+    <h2>block vs inline</h2>
+    <p>A block element will, by default, take 100% width and start on a new line</p>
+    <div style="background-color: rgba(50,50,50,.6);">
+      div1
+    </div>
+    <div style="background-color: rgba(90,90,90,.6);">
+      div2
+    </div>
+    <p>Examples of block elements</p>
+    <ul>
+      <li> <code>&lt;div&gt;</code></li>
+      <li>headings <code>&lt;h1&gt;</code></li>
+      <li> <code>&lt;table&gt;</code></li>
+      <li> <code>&lt;form&gt;</code></li>
+      <li> <code>&lt;p&gt;</code></li>
+      <li>...</li>
+    </ul>
+
+  </section>
+
+  <section class="slide">
+    <p>An inline element is placed with the other in the flow.</p>
+    <span style="background-color: rgba(90,90,90,.6);">span 1</span> some random text <span style="background-color: rgba(90,90,90,.6);">span 2</span>.
+    <p>Examples of inline elements</p>
+    <ul>
+      <li> <code>&lt;span&gt;</code></li>
+      <li> <code>&lt;img&gt;</code></li>
+      <li> <code>&lt;a&gt;</code></li>
+      <li> <code>&lt;input&gt;</code></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <p>The default behavior can be changed with the <code>display</code> property</p>
+    <code>display: inline;</code> <br />
+    <div style="background-color: rgba(50,50,50,.6); display: inline;">
+      div1
+    </div>
+    <div style="background-color: rgba(90,90,90,.6); display: inline;">
+      div2
+    </div>
+    <br /> <hr />
+    <code>display: block;</code>
+    <span style="background-color: rgba(90,90,90,.6); display: block">span 1</span> some random text <span style="background-color: rgba(90,90,90,.6); display: block">span 2</span>
+  </section>
+
+  <!-- <section class="slide"> -->
+  <!--   <h2>hide something</h2> -->
+  <!--   <p> <code>display: none;</code></p> -->
+  <!--   <p> <code>visibility: hidden;</code></p> -->
+  <!-- </section> -->
+
+  <!-- <section class="slide"> -->
+  <!--   <h2>differences ???</h2> -->
+  <!--   <ul> -->
+  <!--   <li> <code>display: none;</code> the element is 'not in the page'. It does not take space</li> -->
+  <!--   <li> <code>visibility: hidden;</code> the element is just invisible, but is still here.</li> -->
+  <!--   </ul> -->
+  <!-- </section> -->
+
+  <!-- <section class="slide"> -->
+  <!--   <h2>demo</h2> -->
+  <!--   <div class="col"> -->
+  <!--     <p>set visibility to hidden</p> -->
+  <!--     <textarea data&#45;subject="#display0" rows="1" class="snippet">visibility: </textarea> -->
+  <!--     <div class="border&#45;container"> -->
+  <!--       <div id="display0" style="width: 200px; height: 200px; background&#45;color: rgba(90, 90, 90, .6);"> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div><div class="col"> -->
+  <!--     <p>set display to none</p> -->
+  <!--     <textarea data&#45;subject="#display1" rows="1" class="snippet">display: </textarea> -->
+  <!--     <div class="border&#45;container"> -->
+  <!--       <div id="display1" style="width: 200px; height: 200px; background&#45;color: rgba(90, 90, 90, .6);"> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </section> -->
+
+  <section class="slide">
+    <p>How to set the height on an inline element ?</p>
+    <pre><code>&lt;span class="warning"&gt;warning&lt;/span&gt;</code>
+  : boredom is harmful for human beings.</pre>
+
+    <br />
+    <textarea class="snippet" data-subject="#inline0">height: 3em;
+padding: 1.2em;</textarea>
+    <span class="warning" id="inline0" style="background-color: red;">warning</span>: boredom is harmful for human beings.
+    <p class="delayed">Use <code>display: inline-block;</code></p>
+  </section>
+
+  <section class="slide">
+    <h2>inline-block</h2>
+    <ul>
+      <li>Cannot set height on inline element</li>
+      <li>Padding top and bottom acts weirdly on inline elements</li>
+      <li>Margin top end bottom have no effects on inline elements</li>
+    </ul>
+    <p>Inline block allow to place an element inline with the same control as a block element.</p>
+  </section>
+
+  <section class="slide">
+    <h2>float</h2>
+    <p>Wrap content around an element.</p>
+    regular page:
+
+    <div class="border-container">
+
+      <h3 style="border: 1px solid black; padding: 10px; margin: 10px; background-color: crimson;">Right sidebar here</h3>
+
+      <h3 style="border: 1px solid lime; padding: 0; margin: 5px; background-color: rgba(10,10,10,.7);">Left sidebar</h3>
+
+      <p style="font-size: .5em">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida tellus risus, et gravida mi lobortis ac. Etiam consectetur ligula odio, et fringilla nisi semper nec.
+
+      Fusce eget feugiat tellus. In vel semper orci. Curabitur a viverra turpis. Suspendisse quis dapibus risus, quis scelerisque dui.
+      </p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>float</h2>
+    <p> <code>float:</code> can be <code>left</code> <code>right</code> or <code>none</code></p>
+
+    <div class="border-container">
+
+      <h3 style="border: 1px solid black; padding: 10px; margin: 10px; background-color: crimson; float: right">Right sidebar here</h3>
+
+      <h3 style="border: 1px solid lime; padding: 0; margin: 5px; background-color: rgba(10,10,10,.7); float: left;">Left sidebar</h3>
+
+      <p style="font-size: .5em">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida tellus risus, et gravida mi lobortis ac. Etiam consectetur ligula odio, et fringilla nisi semper nec.
+
+      Fusce eget feugiat tellus. In vel semper orci. Curabitur a viverra turpis. Suspendisse quis dapibus risus, quis scelerisque dui.
+      </p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>stop the float</h2>
+    <p>To avoid an element to wrap around a floated element: use <code>clear: both;</code> (can be right, left or both). This prevent any floated element to be placed on the cleared side of the element</p>
+  </section>
+
+  <section class="slide">
+    <h2>example</h2>
+    without <code>clear</code>: floated element bumping into each others.
+    <div>
+      <div class="box border" style="float: right;"> </div>
+      <div class="box border" style="float: right; width: 150px;"> </div>
+      <div class="box border" style="float: right; height: 200px;"> </div>
+      <p style="font-size: .5em">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida tellus risus, et gravida mi lobortis ac. Etiam consectetur ligula odio, et fringilla nisi semper nec.
+
+      Fusce eget feugiat tellus. In vel semper orci. Curabitur a viverra turpis. Suspendisse quis dapibus risus, quis scelerisque dui.
+      </p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>example</h2>
+    with <code>clear: right;</code> on every box:
+    <div>
+      <div class="box border" style="float: right; clear: right;"> </div>
+      <div class="box border" style="float: right; width: 150px; clear: right;"> </div>
+      <div class="box border" style="float: right; height: 200px; clear: right;"> </div>
+      <p style="font-size: .5em">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida tellus risus, et gravida mi lobortis ac. Etiam consectetur ligula odio, et fringilla nisi semper nec.
+
+      Fusce eget feugiat tellus. In vel semper orci. Curabitur a viverra turpis. Suspendisse quis dapibus risus, quis scelerisque dui.
+      </p>
+    </div>
+
+
+  </section>
+
+  <footer class="slide">
+  <h2>that's all for the moment</h2>
+  </footer>
+
+<script src="slideshow.js"></script>
+<script src="plugins/css-edit.js"></script>
+<script src="plugins/css-snippets.js"></script>
+<script src="plugins/css-controls.js"></script>
+<script src="plugins/code-highlight.js"></script>
+<script>
+var slideshow = new SlideShow();
+
+var snippets = document.querySelectorAll('.snippet');
+for(var i=0; i<snippets.length; i++) {
+	new CSSSnippet(snippets[i]);
+}
+
+var cssControls = document.querySelectorAll('.css-control');
+for(var i=0; i<cssControls.length; i++) {
+	new CSSControl(cssControls[i]);
+}
+</script>
+	
+</body>
+</html>
