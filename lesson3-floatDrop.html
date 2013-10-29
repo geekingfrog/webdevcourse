@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<title>Float drop problem</title>
+
+<style type="text/css" media="all">
+
+/* * { */
+/*   box-sizing: border-box; */
+/* } */
+
+body {
+  padding: 0;
+  margin: 0 auto;
+  width: 800px;
+  border: 1px solid black;
+}
+
+header {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  padding: 1em;
+  border: 1px solid black;
+  border-left: none;
+  border-right: none;
+}
+
+.block {
+  height: 5em;
+  float: left;
+  padding: 0 10px;
+  border: 1px solid black;
+}
+
+.block.medium {
+  width: 20%;
+}
+
+.block.big {
+  width: 40%;
+}
+
+.block.first {
+  background-color: hsl(34, 100%, 50%);
+}
+
+.block.second {
+  background-color: hsl(154, 100%, 50%);
+}
+
+.block.third {
+  background-color: hsl(274, 100%, 50%);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+  Float-based layout
+</header>
+
+<div class="content">
+
+  <div class="block big first"> </div>
+  <div class="block big second"> </div>
+  <div class="block medium third"> </div>
+  <div style="clear: both;">
+  
+  </div>
+
+</div>
+
+</body>
+
+</html>

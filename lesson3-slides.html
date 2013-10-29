@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>CSSS: A brief introduction</title>
+
+<link href="slideshow.css" rel="stylesheet" />
+<link href="theme.css" rel="stylesheet" />
+<link href="talk.css" rel="stylesheet" />
+
+<style type="text/css" media="all">
+textarea {
+  resize: none;
+}
+
+* {
+  transition: width .5s, height .5s;
+}
+
+.col {
+  width: 50%;
+  float: left;
+}
+
+.border-container {
+  padding: 5px;
+  border: 3px solid red;
+  display: inline-block;
+}
+
+.box {
+  background-color: crimson;
+  height: 100px;
+  width: 100px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+</style>
+
+<script src="prefixfree.min.js"></script>
+</head>
+<body>
+
+<header id="intro" class="slide">
+  <h1>
+    CSS introduction - float and positionning
+  </h1>
+  <p class="attribution">Grégoire Charvet</p>
+</header>
+
+  <section class="slide" title="CSSS: Introduction">
+    <h2>Reminder</h2>
+    <ul>
+      <li> <code>float</code> makes neighbors elements wrap around.</li>
+      <li> can be <code>left / right / none</code></li>
+    </ul>
+
+    <div>
+      <div style="float: left; width: 8em; background-color: rgba(20,20,20,.8);">
+        floated element here
+      </div>
+      <div>This element wrap around the float. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla, erat id laoreet viverra, velit ligula posuere nisl, ut adipiscing mi est eu massa.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>multi columns</h2>
+    <ul>
+      <li>float can be used to create multiple columns</li>
+      <li>must specify the width of each columns and float them all.</li>
+      <li> <a href="./lesson3-columns1.html">example</a></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Some problems</h2>
+    <p>Top margin ignored</p>
+    <textarea class="snippet" data-subject="#floatBug1">margin-top: 30px;</textarea>
+    <div style="float: left;">
+      this is a floated element.
+    </div>
+    <div id="floatBug1" style="clear: both;">
+      This element's margin-top property has no effect
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>fix the problem</h2>
+    <p>wrap the floated element in an element and apply <code>overflow:hidden;</code> </p>
+    <div style="overflow: hidden">
+      <div style="float: left;">
+        this is a floated element.
+      </div>
+    </div>
+    <div style="margin-top: 40px; clear: both;">
+      This element has a margin-top.
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>height computation</h2>
+    <div style="border: 2px solid white;">
+      <div style="float: left; border: 1px solid black; background-color: crimson;">Floated element</div>
+      <div style="float: left; border: 1px solid black; background-color: crimson;">Floated element</div>
+    </div>
+    <p style="clear: both;">The floated element are not taken into account when computing the height of the container</p>
+    <p class="delayed">Same fix with <code>overflow: hidden;</code></p>
+  </section>
+
+  <section class="slide">
+  <h2>float and height</h2>
+  <ul>
+  <li>A floating element does not count in the height of its container.</li>
+  <li>This can be fixed with <code>overflow: hidden</code> on the container</li>
+  <li>Another method is to add an empty div with <code>clear: both;</code> after the last floated element.</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+    <h2>float drop</h2>
+    <a href="./lesson3-floatDrop.html">example</a>
+    <p class="delayed">To fix it, use <code>box-sizing</code></p>
+  </section>
+
+  <section class="slide">
+    <h2>box-sizing</h2>
+    <p>Specify how to compute the width of an element.</p>
+    <ul>
+    <li> <code>content-box</code> width = content's width (default)</li>
+    <li> <code>border-box</code> width = content's width + padding (left and right) + border (left and right)</li>
+    </ul>
+    <p>Be careful to margins though.</p>
+  </section>
+
+  <footer class="slide">
+    <h2>that's all for the moment</h2>
+  </footer>
+
+  <script src="slideshow.js"></script>
+  <script src="plugins/css-edit.js"></script>
+  <script src="plugins/css-snippets.js"></script>
+  <script src="plugins/css-controls.js"></script>
+  <script src="plugins/code-highlight.js"></script>
+  <script>
+var slideshow = new SlideShow();
+
+var snippets = document.querySelectorAll('.snippet');
+for(var i=0; i<snippets.length; i++) {
+  new CSSSnippet(snippets[i]);
+}
+
+var cssControls = document.querySelectorAll('.css-control');
+for(var i=0; i<cssControls.length; i++) {
+  new CSSControl(cssControls[i]);
+}
+  </script>
+
+  </body>
+  </html>
