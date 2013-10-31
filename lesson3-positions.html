@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<title>example of different positions</title>
+<style type="text/css" media="all">
+
+* {
+  box-sizing: border-box;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  height: calc(100% - 20px);
+}
+
+html {
+  height: 100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="border" style="position: fixed; background-color: #cc0; left: 0; z-index: 2;">
+position: fixed; <br />left: 0;
+</div>
+
+<div class="border" style="height: 150%;">
+  <div class="border" style="margin: 20px 10px; padding: 10px;">
+    <div class="border" style="padding: 2em 0; position: relative;">
+      This div has "position: relative;"
+    </div>
+  </div>
+
+  <div class="border" style="margin: 20px 10px; padding: 10px;">
+
+    <div class="border" style="padding: 2em 0; position: absolute; top:0; right:0; background-color:#ccc">
+      This div has "position: absolute; top: 0; right: 0;"
+    </div>
+  </div>
+
+  <hr />
+  <h1>Z-index</h1>
+
+  <div class="border">
+  <div style="position: relative; width: 6em; height: 6em; background-color: red;"> </div>
+  <div style="position: relative; width: 6em; height: 6em; background-color: green; top: -3em;"> </div>
+  <div style="position: relative; width: 6em; height: 6em; background-color: blue; top: -5em; left: 3em; z-index: -1;"><br /><br />z-index: -1; </div>
+  </div>
+
+</div>
+
+</body>
+
+</html>

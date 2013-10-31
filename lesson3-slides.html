@@ -137,6 +137,80 @@ textarea {
     <p>Be careful to margins though.</p>
   </section>
 
+
+  <section class="slide">
+    <h2>Positionning</h2>
+    <p>The property <code>position</code> control how an element should be placed. It can have the following values</p>
+    <ul>
+      <li><code>static</code> (default)</li>
+      <li><code>relative</code></li>
+      <li><code>absolute</code></li>
+      <li><code>fixed</code></li>
+      <li><code>inherit</code></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>position: relative;</h2>
+    <ul>
+      <li>Does nothing visible</li>
+      <li>The element can now be nudged with <code>top/left/bottom/right</code></li>
+      <li>The element now respects the <code>z-index</code> property (altitude)</li>
+      <li>It is now the reference for all children with <code>position: absolute;</code></li>
+    </ul>
+    <div style="background-color: crimson; position: relative; height: 3em;"> </div>
+  </section>
+
+  <section class="slide">
+    <h2>position: absolute;</h2>
+    <img src="./img/absolute-inside-relative.png" class="col"/>
+    <img src="./img/absolute-inside-static.png" class="col"/>
+  </section>
+
+  <section class="slide">
+    <h2>position: fixed;</h2>
+    <p>Same as position: absolute, but the origin is always the top left corner of the window</p>
+    <p>See <a href="./lesson3-positions.html">examples</a></p>
+  </section>
+
+  <section class="slide">
+    <h2>hiding elements</h2>
+    <p>Two ways: <code>display: none;</code> or <code>visibility: hidden;</code></p>
+  </section>
+
+  <section class="slide">
+    <h2>display: none;</h2>
+    <ul>
+      <li>As if the element is not present at all in the page</li>
+      <li>Doesn't take space</li>
+      <li>Ignored by the browser's rendering engine</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>visibility: hidden;</h2>
+    <ul>
+      <li>The element turns invisible</li>
+      <li>But it's still here and take space (margin, border, padding and dimensions)</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>example</h2>
+    <p>control div</p>
+    <div class="border-container">
+      <div class="box"> </div>
+    </div>
+    <p><code>display: none;</code></p>
+    <div class="border-container">
+      <div class="box" style="display: none;"> </div>
+    </div>
+    <p><code>visibility: hidden;</code></p>
+    <div class="border-container">
+      <div class="box" style="visibility: hidden;"> </div>
+    </div>
+  </section>
+
   <footer class="slide">
     <h2>that's all for the moment</h2>
   </footer>
