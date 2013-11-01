@@ -1,0 +1,71 @@
+/* for every rules about the main-menu or the sub-menu,  */
+/* the first properties are required for the rollover, */
+/* and the ones after the comment 'nice stuff' are only here */
+/* to make the menu look nicer and are not strictly required */
+
+
+/* for convenience */
+* {
+  box-sizing: border-box;
+}
+
+/* reset the box model of lists */
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+
+.main-menu > li {
+  display: inline-block;
+  position: relative;
+  width: 20%;
+
+  /* nice stuff */
+  padding: .5em 1em;
+  background-color: rgb(52, 152, 219);
+}
+
+.main-menu > li:hover {
+  background-color: rgb(41, 128, 185);
+}
+
+.main-menu > li:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+
+  /* nice stuff */
+  background-color: rgb(41, 128, 185);
+  margin-top: .5em;
+}
+
+.sub-menu > li {
+  list-style-type: none;
+  display: block;
+
+  /* nice stuff */
+  padding: .3em 0;
+  padding-left: 1em;
+}
+
+.sub-menu > li:hover {
+  /* nice stuff */
+  background-color: rgb(52, 152, 219);
+  cursor: pointer;
+}
+
+
+/* exercice two below */
+.red {
+  color: rgb(192, 57, 43);
+  background-color: rgb(236, 240, 241);
+  padding: 0 .5em;
+}
+
