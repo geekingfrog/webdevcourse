@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>CSSS: A brief introduction</title>
+
+<link href="slideshow.css" rel="stylesheet" />
+<link href="theme.css" rel="stylesheet" />
+<link href="talk.css" rel="stylesheet" />
+
+<style type="text/css" media="all">
+textarea {
+  resize: none;
+}
+
+* {
+  transition: width .5s, height .5s;
+}
+
+.col {
+  width: 50%;
+  float: left;
+}
+
+.border-container {
+  padding: 5px;
+  border: 3px solid red;
+  display: inline-block;
+}
+
+.box {
+  background-color: crimson;
+  height: 100px;
+  width: 100px;
+}
+
+.empty-box {
+  height: 200px;
+  width: 200px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.listBgimg li:before {
+  content: "" !important;
+}
+
+.listBgimg > li{
+  background: url(./img/pokeball.png) no-repeat left center;
+  background-size: 1em;
+  padding-left: 1.1em;
+}
+
+</style>
+
+<script src="prefixfree.min.js"></script>
+</head>
+<body>
+
+<header id="intro" class="slide">
+  <h1>
+    Background, shadows, gradients and responsive design
+  </h1>
+  <p class="attribution">Grégoire Charvet</p>
+</header>
+
+<section>
+
+  <header class="slide">
+    <h1>backgrounds</h1>
+  </header>
+
+  <section class="slide">
+    <h2>background image</h2>
+    <p>
+    <textarea class="snippet" rows="3">background-image:
+      url(./img/pikachu.png);</textarea>
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>repetition</h2>
+    <code>background-repeat: no-repeat/repeat-x/repeat-y</code>
+    <textarea class="snippet">background-image:
+      url(./img/pokeball.png);
+      background-repeat: repeat-y;</textarea>
+  </section>
+
+  <section class="slide" style="background-image: url(./img/pokeball.png); background-repeat: no-repeat;">
+    <h2>position</h2>
+    <code>background-position</code>
+    <ul>
+      <li>keywords (top, center, bottom, etc...)</li>
+      <li>percentage %</li>
+      <li>any css units</li>
+    </ul>
+    <textarea class="snippet">background-position: center center;</textarea>
+  </section>
+
+  <section class="slide">
+    <h2>size</h2>
+    <code>background-size</code>
+    <p>If only one value is given, it is expected to be the length, and the height is assumed to be 'auto'</p>
+    <ul>
+      <li>length (in css units)</li>
+      <li>percentage</li>
+      <li><code>cover</code></li>
+      <li><code>contain</code></li>
+    </ul>
+  </section>
+
+  <section class="slide" style="background-image: url(./img/pokeball.png); background-repeat: no-repeat;">
+    <h2>size, example</h2>
+    <textarea class="snippet">background-size: contain;</textarea>
+  </section>
+
+  <section class="slide" style="background-image: url(./img/pokeball.png); background-repeat: no-repeat; background-position: center 10%;">
+    <h2>attachment</h2>
+    <code>background-attachment</code>
+    <p>whether a background image is fixed or scrolls with the rest of the page.</p>
+    <p>can be fixed or scroll (or local, seldom used)</p>
+    <textarea class="snippet" >background-attachment: fixed;</textarea>
+    <div style="height: 150%;"> </div>
+  </section>
+
+  <section class="slide">
+    <h2>shorthand</h2>
+    <ul>
+      <li>background-color</li>
+      <li>background-image</li>
+      <li>background-repeat</li>
+      <li>background-attachment</li>
+      <li>background-position</li>
+    </ul>
+    <textarea class="snippet">background:
+      teal
+      url(./img/pokeball.png)
+      no-repeat
+      scroll
+      center center;
+    </textarea>
+  </section>
+
+  <section class="slide">
+    <h2>practical example</h2>
+    <p>Use of background image to change the bullets on lists. Inspect the 'li' element</p>
+    <ul class="listBgimg">
+      <li>item one</li>
+      <li>item two</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <header class="slide">
+    <h1>shadows</h1>
+  </header>
+
+  <section class="slide">
+    <h2>box-shadow</h2>
+    syntax:
+    <br />
+    <ul class="col">
+      <li><code>h-shadow</code></li>
+      <li><code>v-shadow</code></li>
+      <li><code>blur</code> (optional)</li>
+      <li><code>spread</code> (optional)</li>
+      <li><code>color</code> (optional)</li>
+      <li><code>inset</code> (optional)</li>
+    </ul>
+
+    <div class="col">
+      <div id="boxShadow" style="height: 5em; width: 90%; border: 1px solid black;
+        background-color: rgba(0, 0, 0, .4); margin: 5%;">
+      </div>
+      <textarea class="snippet" data-subject="#boxShadow">box-shadow:
+  30px 10px
+  4px
+  rgba(220, 20, 20, .4);</textarea>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>text-shadow</h2>
+    <div style="overflow: hidden;">
+      <p>syntax</p>
+      <ul class="col">
+        <li><code>h-shadow</code></li>
+        <li><code>v-shadow</code></li>
+        <li><code>blur radius</code></li>
+        <li><code>color</code></li>
+      </ul>
+      <p class="col">Multiple effects can be specified, separated by a comma.</p>
+    </div>
+
+    <textarea class="snippet" data-subject="#textShadow">text-shadow: 0 0 .5em blue;</textarea>
+    <p id="textShadow">Dolor orci bibendum enim, a sagittis nulla nunc quis elit. Phasellus.</p>
+  </section>
+
+</section>
+
+<section>
+
+  <header class="slide">
+  <h1>Gradients</h1>
+  </header>
+
+  <section class="slide">
+  <h2>vendor prefixes</h2>
+  <p>gradients requires vendor prefix in some webkit based browsers</p>
+  <code>linear-gradient: ...</code>
+  <code>-webkit-linear-gradient: ...</code>
+  <p>See <a href="http://caniuse.com/#search=gradient">canIUse</a> for the list of css properties and their support across various browsers.</p>
+  <p>These slides only use the newest syntax without the prefix</p>
+  </section>
+
+  <section class="slide">
+    <h2>example</h2>
+    <textarea class="snippet" data-subject="#gradient1">background: linear-gradient(to bottom, blue, white);</textarea>
+    <div style="height: 200px; width: 200px;" id="gradient1"> </div>
+    <br />
+    <textarea class="snippet" data-subject="#gradient2">background: linear-gradient(30deg, blue, white);</textarea>
+    <div style="height: 200px; width: 200px;" id="gradient2"> </div>
+  </section>
+
+  <section class="slide">
+  <h2>with angles</h2>
+  <p>blue -&gt; white</p>
+  <div class="empty-box" style="background: linear-gradient(0deg, blue, white); color: black; text-align: center; display: inline-block;"> 0deg </div>
+  <div class="empty-box" style="background: linear-gradient(90deg, blue, white); color: black; text-align: center; display: inline-block;"> 90deg </div>
+  <div class="empty-box" style="background: linear-gradient(180deg, blue, white); color: black; text-align: center; display: inline-block;"> 180deg </div>
+  <div class="empty-box" style="background: linear-gradient(-90deg, blue, white); color: black; text-align: center; display: inline-block;"> -90deg </div>
+  </section>
+
+  <section class="slide">
+  <h2>color stops</h2>
+
+<textarea class="snippet" data-subject="#gradient3">background: linear-gradient(to bottom,
+blue,
+white 80%,
+orange);</textarea>
+<div class="empty-box" id="gradient3"> </div>
+
+  </section>
+
+  <section class="slide">
+  <h2>repeating gradients</h2>
+<textarea class="snippet" data-subject="#gradient4">background: repeating-linear-gradient(
+-45deg,
+red,
+red 5px,
+white 5px,
+white 10px);</textarea>
+<div class="empty-box" id="gradient4"> </div>
+  </section>
+
+  <section class="slide" style="background: 
+radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
+radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
+radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
+radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,
+radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,
+radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
+linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);
+background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
+background-color: #840b2a;">
+  <h2>And some more...</h2>
+  <a href="http://lea.verou.me/css3patterns/">crazy stuff</a>
+  </section>
+
+</section>
+
+<section>
+  <header class="slide">
+    <h1>Responsive design</h1>
+  </header>
+
+  <section class="slide">
+    <h2>viewport</h2>
+  <p>Add in the html: </p>
+  <code>
+    &lt;meta name="viewport" content="width=device-width"&gt; 
+  </code>
+  <p>This scale the content to the width of the device.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Media queries</h2>
+    <ul>
+    <li>Styles applied when a certain condition is met.</li>
+    <li>Create breakpoints as a function of the width of the device.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+  <h2>breakpoints</h2>
+  <p>In the css:</p>
+  <textarea disabled rows="5">@media (max-width: 480px) {
+  body {
+    /* some stuff here */
+  }
+}</textarea>
+    <p>
+    These rules only apply when the device's width is <span style="color: red;">below</span> 480px.
+    </p>
+  </section>
+
+  <section class="slide">
+  <h2>mobile first</h2>
+  <ul>
+  <li>Start your design with a small screen.</li>
+  <li>Increase the screen's size untill it looks really ugly.</li>
+  <li>Create a breakpoint at this size.</li>
+  <li>Rinse and repeat.</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Desktop first</h2>
+    <p>The opposite of mobile first: you start from a large screen and reduce the size.</p>
+  </section>
+
+</section>
+
+<section>
+
+  <header class="slide">
+  <h1>Css frameworks</h1>
+  </header>
+
+  <section class="slide">
+    <h2>Twitter's bootstrap</h2>
+    <a href="http://getbootstrap.com/">get it here</a>
+    <ul>
+      <li>The most popular (1% of websites uses it)</li>
+      <li>Huge community</li>
+      <li>Huge ammount of themes/plugins</li>
+      <li>Uses less (language which compile to css)</li>
+      <li>More difficult to look different from the others</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Zurb's foundation</h2>
+    <a href="http://foundation.zurb.com/">get it here</a>
+    <ul>
+      <li>The second most popular framework.</li>
+      <li>Different from bootstrap</li>
+      <li>Uses Sass (another pre-processor)</li>
+    </ul>
+  </section>
+
+</section>
+
+<footer class="slide">
+  <h2>that's all for the moment</h2>
+</footer>
+
+<script src="slideshow.js"></script>
+<script src="plugins/css-edit.js"></script>
+<script src="plugins/css-snippets.js"></script>
+<script src="plugins/css-controls.js"></script>
+<script src="plugins/code-highlight.js"></script>
+<script>
+var slideshow = new SlideShow();
+
+var snippets = document.querySelectorAll('.snippet');
+for(var i=0; i<snippets.length; i++) {
+  new CSSSnippet(snippets[i]);
+}
+
+var cssControls = document.querySelectorAll('.css-control');
+for(var i=0; i<cssControls.length; i++) {
+  new CSSControl(cssControls[i]);
+}
+</script>
+
+</body>
+</html>
